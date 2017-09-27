@@ -12,7 +12,10 @@
   	<div><%= flash[:info] %></div>
   	
   	<% if @current_user %>
-  		<p><a href="/users/logout">Se déconnecter</a></p>
+  		<!-- <p><a href="/users/logout">Se déconnecter</a></p> -->
+  		<%= form_tag "/users/login", method: :delete do %>
+  			<input type="submit" value="Se déconnecter" />
+  		<% end %>
   	<% end %>
 
     <%= yield %>
