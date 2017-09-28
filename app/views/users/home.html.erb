@@ -1,8 +1,8 @@
 <% if @current_user %>
 	<h1>Bienvenue <%= @current_user.name %> !</h1>
 	<ul>
-		<li><a href="">Voir les annonces</a></li>
-		<li><a href="">Proposer une annonce</a></li>
+		<li><a href="/advertisements">Voir toutes les annonces</a></li>
+		<li><a href="/advertisements/new">Proposer une annonce</a></li>
 	</ul>
 
 <% else %>
@@ -11,7 +11,7 @@
 	<a href="/users/login">Se connecter</a>
 
 	<ul>
-		<li><a href="">Voir les annonces</a></li>
+		<li><a href="/advertisements">Voir toutes les annonces</a></li>
 		<li>Proposer une annonce <i>(Attention ! Vous devez être connecté pour proposer une annonce)</i></li>
 	</ul>
 

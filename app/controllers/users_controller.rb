@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   end
 
   def create
-  	if User.create name: params[:name], password: params[:password], role: "user"
+    @user = User.create name: params[:name], password: params[:password], role: "user"
+  	if @user.save
   		flash[:info] = "Votre compte a été créé. Veuillez vous connecter."
   		redirect_to "/users/login"
   	else

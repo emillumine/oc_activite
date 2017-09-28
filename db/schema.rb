@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170927045700) do
+ActiveRecord::Schema.define(version: 20170928050007) do
+
+  create_table "advertisements", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "price"
+    t.string "state"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_advertisements_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "advertisement_id"
+    t.integer "user_id"
+    t.text "content"
+    t.index ["advertisement_id"], name: "index_comments_on_advertisement_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"

@@ -1,0 +1,40 @@
+<h1><%= @advertisement.title %></h1>
+
+<p>
+	<b>Auteur :</b> <%= @advertisement.user.name %><br>
+	<b>Prix :</b> <%= @advertisement.price %> €
+</p>
+
+<p><%= @advertisement.content %></p>
+
+<% if @advertisement.state == "waiting" && @current_user.try(:role) == "admin" %>
+	<%= form_tag "/advertisements/#{@advertisement.id}", method: "patch" do %>
+		<input type="submit" value="Publier l'annonce" />
+	<% end %>
+<% end %>
+
+<p>
+	<a href="/advertisements">Retourner à la liste des annonces</a><br>
+	<a href="/users/home">Retourner à l'accueil</a>
+</p>
+
+<h2>Poster un commentaire</h2>
+
+<% if !@current_user %>
+	<i>Attention ! Vous devez être connecté pour poster un commentaire.</i>
+	<a href="/users/login">Se connecter.</a>
+<% else %>
+	<%= form_tag "/advertisements/#{@advertisement.id}", method: "post" do %>
+		<p><textarea name="content"></textarea></p>
+		<input type="submit" value="Ajouter le commentaire" />
+	<% end %>
+<% end %>
+
+<h2>Liste des commentaires (<%= @comments.length %>)</h2>
+
+<% @comments.each do |comment| %>
+	<p> 
+	<i><%= comment.content %></i><br>
+	Posté par : <b><%= comment.user.name %></b> 
+	</p>
+<% end %>

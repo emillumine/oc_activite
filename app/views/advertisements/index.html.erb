@@ -1,0 +1,19 @@
+<h1>Liste des annonces</h1>
+
+<p><a href="/users/home">Retourner à l'accueil</a></p>
+
+<% if  @current_user.try(:role) == "admin" %>
+	<h2>Liste des annonces en attente de validation</h2>
+	<ul>
+		<% @waiting_ads.each do |ad| %>
+			<li><a href="/advertisements/<%= ad.id %>"><%= ad.title %></a></li>
+		<% end %>
+	</ul>
+	<h2>Liste des annonces publiées</h2>
+<% end %>
+
+<ul>
+	<% @published_ads.each do |ad| %>
+		<li><a href="/advertisements/<%= ad.id %>"><%= ad.title %></a></li>
+	<% end %>
+</ul>
