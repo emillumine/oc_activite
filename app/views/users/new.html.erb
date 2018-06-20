@@ -3,8 +3,8 @@
 <p><a href="/users/home">Retourner à l'accueil</a></p>
 
 <%= form_tag "/users/new", method: :post do %>
-	<input type="text" name="name" />
-	<input type="password" name="password" />
+	<p>Nom : <input type="text" name="name" /> <i><%= @user.errors[:name].first %></i></p>
+	<p>Password : <input type="password" name="password" /> <i><%= @user.errors[:password].first %></i></p>
 	<input type="submit" value="S'inscrire" />
 <% end %>
 

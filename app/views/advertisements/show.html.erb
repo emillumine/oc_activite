@@ -26,6 +26,7 @@
 <% else %>
 	<%= form_tag "/advertisements/#{@advertisement.id}", method: "post" do %>
 		<p><textarea name="content"></textarea></p>
+		<p><i><%= @comment.errors[:content].first %></i></p>
 		<input type="submit" value="Ajouter le commentaire" />
 	<% end %>
 <% end %>

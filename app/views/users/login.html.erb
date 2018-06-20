@@ -3,7 +3,7 @@
 <p><a href="/users/home">Retourner à l'accueil</a></p>
 
 <%= form_tag "/users/login", method: :post do %>
-	<input type="text" name="name" />
-	<input type="password" name="password" />
+	<p>Nom : <input type="text" name="name" /></p>
+	<p>Mot de passe : <input type="password" name="password" /></p>
 	<input type="submit" value="Se connecter" />
 <% end %>

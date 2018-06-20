@@ -3,9 +3,9 @@
 <p><a href="/users/home">Retourner à l'accueil</a></p>
 
 <%= form_tag "/advertisements/new", method: :post do %>
-	<p>Titre : <input type="text" name="title" /></p>
-	<p>Contenu : <textarea name="content"></textarea></p>
-	<p>Prix : <input type="integer" name="price" /> €</p>
+	<p>Titre : <input type="text" name="title" /> <i><%= @advertisement.errors[:title].first %></i></p>
+	<p>Contenu : <textarea name="content"></textarea> <i><%= @advertisement.errors[:content].first %></i></p>
+	<p>Prix : <input type="integer" name="price" /> € <i><%= @advertisement.errors[:price].first %></i></p>
 	<input type="submit" value="Proposer l'annonce" />
 	<i>*Attention ! L'annonce ne sera publiée qu'une fois qu'elle aura été validée par un administrateur.</i>
 

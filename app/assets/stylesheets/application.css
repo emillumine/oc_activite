@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+.info {
+	padding: 0.3cm;
+	background-color: #2ecc71;
+	color: white;
+	font-weight: bold;
+}
+
+.error {
+	padding: 0.3cm;
+	background-color: #e74c3c;
+	color: white;
+	font-weight: bold;
+}

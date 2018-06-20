@@ -3,15 +3,16 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def create
-    @user = User.create name: params[:name], password: params[:password], role: "user"
+    @user = User.new name: params[:name], password: params[:password], role: "user"
   	if @user.save
   		flash[:info] = "Votre compte a été créé. Veuillez vous connecter."
   		redirect_to "/users/login"
   	else
-  		flash[:info] = "L'inscrition a échoué."
+  		flash[:error] = "L'inscrition a échoué."
   		render "/users/new"
   	end
   end
@@ -27,8 +28,8 @@ class UsersController < ApplicationController
   		redirect_to "/users/home"
   	else
   		session[:user_id] = nil
-  		flash[:info] = "La connexion a échoué"
-  		redirect_to '/users/home'
+  		flash[:error] = "La connexion a échoué"
+  		render 'login'
   	end
   end
 
